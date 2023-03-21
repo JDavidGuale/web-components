@@ -1,5 +1,6 @@
 /* eslint-disable */
 <template>
+  <v-app class="application theme--light">
   <v-card outlined class="custom-card mt-1">
     <div class="title">Formulario de Llamada</div>
     <div class="px-3 pt-4">
@@ -27,6 +28,7 @@
               background-color="var(--skyblue)"
               filled
               dense
+              :attach="$parent.$el"
             ></v-select>
           </div>
           <div class="custom-input">
@@ -45,9 +47,9 @@
         <div class="col-md-3 py-0">
           <div>
             <div class="label margin-bottom">Llamar después</div>
-            <v-menu offset-y
-:close-on-content-click="true"
-class="custom-menu">
+            <v-menu offset-y 
+            :close-on-content-click="true" 
+            class="custom-menu">
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                   v-bind="attrs"
@@ -150,9 +152,9 @@ class="custom-menu">
                 :min="getCurrentDate"
               >
                 <v-spacer></v-spacer>
-                <v-btn text
-color="primary"
-@click="menuDate = false">
+                <v-btn text 
+                color="primary" 
+                @click="menuDate = false">
                   Cancel
                 </v-btn>
                 <v-btn
@@ -262,11 +264,46 @@ color="primary"
       </div>
     </div>
   </v-card>
+</v-app>
+
 </template>
 
 <script>
+import vuetify from '@/plugins/vuetify';
+import '../../node_modules/vuetify/dist/vuetify.min.js';
+
+import {
+  VBtn,
+  VCard,
+  VCheckbox,
+  VSelect,
+  VDatePicker,
+  VTimePicker,
+  VDialog,
+  VIcon,
+  VTextarea,
+  VTextField,
+  VRadio,
+  VRadioGroup,
+} from "vuetify/lib";
+
 export default {
   name: "FormLlamada",
+  vuetify,
+  components: {
+    VBtn,
+    VCard,
+    VCheckbox,
+    VSelect,
+    VDatePicker,
+    VTimePicker,
+    VDialog,
+    VIcon,
+    VTextarea,
+    VTextField,
+    VRadio,
+    VRadioGroup,
+  },
   data() {
     return {
       formularioLlamada: {
@@ -354,21 +391,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../node_modules/vuetify/dist/vuetify.min.css';
 .title {
   font-size: 16px !important;
   font-weight: bold;
   padding: 0 0.5rem;
-  background-color: var(--skyblue);
+  background-color: #d7e9fc;
 }
 
 .custom-card {
   width: 100%;
-  background-color: var(--light-grey);
+  background-color: #f1f5fe !important;
 }
 
 .label {
   font-size: 12px !important;
-  color: var(--grey-font);
+  color: #5e6061;
 }
 
 .select {
@@ -401,12 +439,12 @@ export default {
 
 ::v-deep .v-select__slot {
   font-size: 14px;
-  color: var(--grey-font);
+  color: #5e6061;
 }
 
 .option-label ::v-deep label {
   font-size: 14px !important;
-  color: var(--grey-font);
+  color: #5e6061;
 }
 
 ::v-deep .v-input__slot:before {

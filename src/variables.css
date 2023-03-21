@@ -1,22 +1,3 @@
-<template>
-    <form-llamada/>
-</template>
-
-<script>
-import vuetify from '@/plugins/vuetify';
-import FormLlamada from './components/FormLlamada.ce.vue';
-// import FormLlamada from '@/public/FormLlamada.ce.vue';
-export default {
-  name: 'App',
-  vuetify,
-  components: {
-    FormLlamada,
-  },
-};
-</script>
-
-<style>
-@import './variables.css';
 
 :root {
   --purple: #b385e7;
@@ -45,5 +26,3 @@ label {
   min-width: 100px !important;
 }
 
-
-</style>
