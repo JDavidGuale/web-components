@@ -1,22 +1,36 @@
+<!-- Para exportar el componente como web component:
+npm run build -- --target wc --name form-llamada src/App.vue
+-->
 <template>
-    <form-llamada/>
+  <!-- componente a generar -->
+    <crm-telefonia/>
 </template>
+
 
 <script>
 import vuetify from '@/plugins/vuetify';
-import FormLlamada from './components/FormLlamada.ce.vue';
-// import FormLlamada from '@/public/FormLlamada.ce.vue';
+import CrmTelefonia from '@/components/crm_gestion_cobranza/CrmTelefonia';
+
 export default {
   name: 'App',
   vuetify,
   components: {
-    FormLlamada,
+    CrmTelefonia,
+  },
+  
+  props:{
+   
+    setIsDialogVisible: {
+      type: Function,
+      default: () => {
+        console.log('setIsDialogVisible no definido');
+      },
+    },
   },
 };
 </script>
 
-<style>
-@import './variables.css';
+<style lang="scss">
 
 :root {
   --purple: #b385e7;
@@ -30,20 +44,9 @@ export default {
   --skyblue: #d7e9fc;
   --blue-font: #2196f3;
   --grey-font: #5e6061;
+  --primary: var(--blue);
 }
 
-label {
-  margin-bottom: 0 !important;
-}
-
-/* When setting CSS, remember that priority increases with specificity, so don't forget to select the exisiting classes as well */
-
-.Vue-Toastification__toast--default.toast-background {
-  background-color: var(--light-grey);
-  padding: 0 !important;
-  max-width: fit-content !important;
-  min-width: 100px !important;
-}
 
 
 </style>

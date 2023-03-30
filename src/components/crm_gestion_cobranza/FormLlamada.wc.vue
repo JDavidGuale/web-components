@@ -1,6 +1,7 @@
 /* eslint-disable */
 <template>
   <v-app class="application theme--light">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
   <v-card outlined class="custom-card mt-1">
     <div class="title">Formulario de Llamada</div>
     <div class="px-3 pt-4">
@@ -28,7 +29,6 @@
               background-color="var(--skyblue)"
               filled
               dense
-              :attach="$parent.$el"
             ></v-select>
           </div>
           <div class="custom-input">
@@ -254,8 +254,8 @@
               dense
             ></v-checkbox>
             <v-btn
-              color="primary"
-              class="white--text text-capitalize"
+              color="var(--primary)"
+              class="white--text text-none"
               @click="guardarLlamada"
               >Guardar</v-btn
             >
@@ -269,8 +269,6 @@
 </template>
 
 <script>
-import vuetify from '@/plugins/vuetify';
-import '../../node_modules/vuetify/dist/vuetify.min.js';
 
 import {
   VBtn,
@@ -289,7 +287,13 @@ import {
 
 export default {
   name: "FormLlamada",
-  vuetify,
+  props:{
+    setIsDialogVisible: {
+      type: Function,
+      required: true,
+    },
+  },
+
   components: {
     VBtn,
     VCard,
@@ -361,9 +365,8 @@ export default {
           ? null
           : this.hourStart + " - " + this.hourEnd;
       console.log(this.formularioLlamada);
-      console.log(this.$refs.llamarDespues);
+      console.log(this.setIsDialogVisible)
       this.setIsDialogVisible(true);
-      // this.setIsVisible(!this.isVisible);
     },
 
     onLlamarDespues(val) {
@@ -391,7 +394,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../node_modules/vuetify/dist/vuetify.min.css';
+  @import '../../../node_modules/vuetify/dist/vuetify.min.css';
+  @import "https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css";
+  @import url("https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700,900");
+
+$body-font-family: "Montserrat", sans-serif;
+.v-application {
+  .text-body-2,
+  .text-body-1,
+  .display-1,
+  .display-2,
+  .display-3,
+  .display-4,
+  .headline,
+  .title,
+  .subtitle-1,
+  .subtitle-2,
+  .body-1,
+  .body-2,
+  .caption,
+  .text-h6,
+  .overline {
+    font-family: $body-font-family !important;
+  }
+}
+
 .title {
   font-size: 16px !important;
   font-weight: bold;
